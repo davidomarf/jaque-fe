@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UserTableComponent } from './user-table/user-table.component';
     UsersComponent,
     SectionHeaderComponent,
     UserTableComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,80 @@
+<div [ngClass]="'overlay-container'">
+  <div [ngClass]="'overlay'">
+
+    <div [ngClass]="'modal-title'">
+      <p *ngIf="modalInfo.operation === 'new'">Agregar un nuevo usuario</p>
+      <p *ngIf="modalInfo.operation === 'modify'">Modificar usuario</p>
+    </div>
+
+    <!-- ---------------------------- Photo Section ---------------------------- -->
+
+    <div [ngClass]="['modal-section', 'modal-photo-upload']">
+
+      <div [ngClass]="'modal-subtitle'">
+        Foto de Perfil
+      </div>
+
+      <div [ngClass]="'modal-photo-container'">
+        <div [ngClass]="'modal-photo-placeholder'">
+          <span [ngClass]="'icon'" [inlineSVG]="'assets/user.svg'"></span>
+        </div>
+        <div [ngClass]="'modal-photo-text'">
+          <span>JPG, PNG | Tamaño mínimo de 300px × 300px</span>
+          <div><button (click)="uploadPhoto()" [ngClass]="'button button-1'">
+              <span [ngClass]="'text'"> Subir foto </span>
+            </button>
+            <button (click)="removePhoto()" [ngClass]="'button button-0'" *ngIf="userInfo.picture">
+              <span [ngClass]="'text'"> Quitar foto actual </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ---------------------------- Info Section ----------------------------- -->
+
+    <div [ngClass]="['modal-section', 'modal-basic-info']">
+
+      <div [ngClass]="'modal-subtitle'">
+        Información Básica
+      </div>
+
+      <div [ngClass]="'modal-row'">
+        <input type="text" placeholder="Nombre" [value]="userInfo.name">
+        <input type="text" placeholder="Apellido Paterno" [value]="userInfo.fathersLastName">
+      </div>
+
+      <div [ngClass]="'modal-row'">
+        <input type="text" placeholder="Apellido Materno" [value]="userInfo.mothersLastName">
+        <input type="text" placeholder="Correo electrónico" [value]="userInfo.email">
+      </div>
+
+      <div [ngClass]="'modal-row'">
+        <select type="dropdown">
+        </select>
+        <div>
+          <span> Inactivo</span>
+          <span *ngIf="userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_on.svg'"
+            style='fill: #677FAC;'></span>
+          <span *ngIf="!userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_off.svg'"
+            style='fill: #E3E3E3;'></span>
+          <span> Activo</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ------------------------------- Buttons ------------------------------- -->
+
+    <div [ngClass]="['modal-section', 'modal-buttons']">
+      <button (click)="cancel()" [ngClass]="['button', 'button-0']">
+        <span [ngClass]="'text'"> Cancelar </span>
+      </button>
+
+      <button (click)="saveUser()" [ngClass]="['button', 'button-1']">
+        <span [ngClass]="'text'"> Guardar usuario </span>
+      </button>
+    </div>
+  </div>
+</div>
