@@ -18,9 +18,10 @@ export class SectionHeaderComponent {
   /**
    * Emits an event to Modal handler to mount the component to create a new user
    *
+   * The -1 indicates that the current user doesn't exist in the Users array
    */
   newUserClick() {
-    this.handleModalChild.emit({ operation: "new", open: true, user: null });
+    this.handleModalChild.emit({ operation: "new", open: true, user: -1 });
   }
 
   constructor() {}
