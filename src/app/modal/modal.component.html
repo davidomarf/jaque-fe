@@ -41,27 +41,55 @@
         Información Básica
       </div>
 
-      <div [ngClass]="'modal-row'">
-        <input type="text" placeholder="Nombre" [value]="userInfo.name">
-        <input type="text" placeholder="Apellido Paterno" [value]="userInfo.fathersLastName">
-      </div>
+      <div [ngClass]="'main-form'">
 
-      <div [ngClass]="'modal-row'">
-        <input type="text" placeholder="Apellido Materno" [value]="userInfo.mothersLastName">
-        <input type="text" placeholder="Correo electrónico" [value]="userInfo.email">
-      </div>
+        <div [ngClass]="'modal-row'">
 
-      <div [ngClass]="'modal-row'">
-        <select type="dropdown">
-        </select>
-        <div>
-          <span> Inactivo</span>
-          <span *ngIf="userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_on.svg'"
-            style='fill: #677FAC;'></span>
-          <span *ngIf="!userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_off.svg'"
-            style='fill: #E3E3E3;'></span>
-          <span> Activo</span>
+          <div [ngClass]="'input-wrapper'">
+            <input type="text" placeholder="Nombre" [value]="userInfo.name">
+          </div>
+
+          <div [ngClass]="'input-wrapper'">
+            <input type="text" placeholder="Apellido Paterno" [value]="userInfo.fathersLastName">
+          </div>
         </div>
+
+
+        <div [ngClass]="'modal-row'">
+
+
+          <div [ngClass]="'input-wrapper'">
+            <input type="text" placeholder="Apellido Materno" [value]="userInfo.mothersLastName">
+          </div>
+
+
+          <div [ngClass]="'input-wrapper'">
+            <input type="text" placeholder="Correo electrónico" [value]="userInfo.email">
+          </div>
+
+        </div>
+
+
+        <div [ngClass]="'modal-row'">
+
+          <div [ngClass]="'input-wrapper'">
+            <select type="dropdown">
+              <option value="saab">Saab</option>
+              <option value="saab">Saab</option>
+            </select>
+          </div>
+
+          <div [ngClass]="'input-wrapper'">
+            <span> Inactivo</span>
+            <span *ngIf="userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_on.svg'"
+              style='fill: #677FAC;'></span>
+            <span *ngIf="!userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_off.svg'"
+              style='fill: #E3E3E3;'></span>
+            <span> Activo</span>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
