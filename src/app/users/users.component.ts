@@ -46,8 +46,18 @@ export class UsersComponent implements OnInit {
     this.modalInfo = event;
   }
 
-  handleUpdateUser(event: any) {
-    if (event.index > 0) {
+  /**
+   * Updates the content of a temporary user if the values change in the modal
+   * 
+   * To update/create it uses an index:
+   *  - If the index is above 0, it'll update the values of the user with such index.
+   *  - If the index is below 0, it doesn't exist, so it creates a new user array with
+   *    the new user at the index 0.
+   * 
+   * @param event Contains the information of the user and the current index
+   */
+  handleUpdateUser(event: any): void {
+    if (event.index >= 0) {
       this.users[event.index] = event.info;
     } else {
       this.users = [event.info, ...this.users];
