@@ -58,14 +58,24 @@ export class ModalComponent implements OnInit {
     this.cancel();
   }
 
-  uploadPhoto() {}
-
-  removePhoto() {}
-
+  /**
+   * Updates the content for a key in the user object
+   * 
+   * @param event Contains the key and the new value
+   */
   updateField(event: any) {
     this.updatedUser[event.target.id] = event.target.value;
   }
 
+
+  /** Toggle the status of the user */
+  toggleActive(){
+    this.userInfo = {...this.userInfo, active: !this.userInfo.active}
+  }
+
+  uploadPhoto() {}
+
+  removePhoto() {}
 
   constructor() {}
 

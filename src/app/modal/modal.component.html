@@ -85,9 +85,9 @@
           <div [ngClass]="'input-wrapper'">
             <span> Inactivo</span>
             <span *ngIf="userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_on.svg'"
-              style='fill: #677FAC;'></span>
+              style='fill: #677FAC;' (click) = "toggleActive()"></span>
             <span *ngIf="!userInfo.active" [ngClass]="'icon'" [inlineSVG]="'assets/toggle_off.svg'"
-              style='fill: #E3E3E3;'></span>
+              style='fill: #E3E3E3;' (click) = "toggleActive()"></span>
             <span> Activo</span>
           </div>
 
