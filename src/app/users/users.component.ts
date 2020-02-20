@@ -1,11 +1,25 @@
 import { Component, OnInit } from "@angular/core";
-
-import { SectionHeaderComponent } from "../section-header/section-header.component";
+import { HttpClient } from "@angular/common/http";
 
 type Button = {
   icon: string;
   text: string;
   style: number;
+};
+
+type User = {
+  picture: string;
+  name: string;
+  fathersLastName: string;
+  mothersLastName: string;
+  email: string;
+  roleId: number;
+  role: string;
+  active: boolean;
+};
+
+type Roles = {
+  id: string;
 };
 
 @Component({
@@ -17,8 +31,10 @@ export class UsersComponent implements OnInit {
   title: string;
   description: string;
   buttons: Button[];
+  users: User[];
+  roles: Roles;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.title = "Usuarios";
     this.description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
@@ -28,5 +44,14 @@ export class UsersComponent implements OnInit {
     ];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.httpClient.get("assets/json/roles.json").subscribe(data => {
+      this.roles = (data as any).roles.map(e => e.position)
+      this.httpClient.get("assets/json/users.json").subscribe(data => {
+        this.users = (data as any).users.map(e => {
+          return { ...e, role: this.roles[e.roleId - 1] };
+        });
+      });
+    });
+  }
 }

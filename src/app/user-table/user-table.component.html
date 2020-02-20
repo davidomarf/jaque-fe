@@ -1,0 +1,41 @@
+<div [ngClass]="'section'">
+  <table [ngClass]="'section-info'">
+    <tr>
+      <th></th>
+      <th>Foto</th>
+      <th>Nombre</th>
+      <th>Apellido paterno</th>
+      <th>Apellido materno</th>
+      <th>Correo</th>
+      <th>Rol</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <tr *ngFor="let user of users; let i = index">
+      <td [ngClass]="'drag-drop'"><span [ngClass]="'icon'" [inlineSVG]="'assets/points.svg'"></span></td>
+
+      <td><img [ngClass]="['image-square', 'image-circle']" src={{user.picture}}></td>
+
+      <td>{{user.name}}</td>
+      <td>{{user.fathersLastName}}</td>
+      <td>{{user.mothersLastName}}</td>
+      <td [ngClass]="'hide-content'">{{user.email}}</td>
+      <td>{{user.role}}</td>
+
+      <td *ngIf="user.active; else inactive">
+        <span (click)="toogleStatus(i)" [ngClass]="['icon', 'toogler']" [inlineSVG]="'assets/toggle_on.svg'" style="fill:#677FAC;"></span>
+      </td>
+      <ng-template #inactive>
+        <td><span (click) ="toogleStatus(i)" [ngClass]="['icon', 'toogler']" [inlineSVG]="'assets/toggle_off.svg'" style="fill:#E3E3E3;"></span></td>
+      </ng-template>
+
+      <td><span [ngClass]="['icon', 'show-on-hover']" [inlineSVG]="'assets/square.svg'" style="fill:
+          #FA6A00;"></span></td>
+      <td><span [ngClass]="['icon', 'show-on-hover']" [inlineSVG]="'assets/trash.svg'" style="fill:
+          #FD5555;" (click)="deleteUser(i)"></span></td>
+
+    </tr>
+  </table>
+</div>
