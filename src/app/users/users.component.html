@@ -1,2 +1,6 @@
-<app-section-header [title]="title" [description]="description" [buttons]="buttons"></app-section-header>
-<app-user-table [users] = "users"></app-user-table>
+<app-section-header [title]="title" [description]="description" [buttons]="buttons"
+  (handleModalChild)="handleModal($event)">
+</app-section-header>
+<app-user-table [users]="users" (handleModalChild)="handleModal($event)"></app-user-table>
+<app-modal *ngIf="modalInfo.open" (handleModalChild)="handleModal($event)" [modalInfo]="modalInfo" [users]="users">
+</app-modal>

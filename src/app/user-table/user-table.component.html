@@ -32,7 +32,7 @@
       </ng-template>
 
       <td><span [ngClass]="['icon', 'show-on-hover']" [inlineSVG]="'assets/square.svg'" style="fill:
-          #FA6A00;"></span></td>
+          #FA6A00;" (click)="modifyUser(i)"></span></td>
       <td><span [ngClass]="['icon', 'show-on-hover']" [inlineSVG]="'assets/trash.svg'" style="fill:
           #FD5555;" (click)="deleteUser(i)"></span></td>
 

@@ -22,6 +22,12 @@ type Roles = {
   id: string;
 };
 
+type Operation = {
+  operation: string;
+  open: boolean;
+  user: number;
+}
+
 @Component({
   selector: "app-users",
   templateUrl: "./users.component.html",
@@ -34,13 +40,20 @@ export class UsersComponent implements OnInit {
   users: User[];
   roles: Roles;
 
+  modalInfo: Operation;
+
+  handleModal(event: Operation){
+    this.modalInfo = event;
+  }
+
   constructor(private httpClient: HttpClient) {
     this.title = "Usuarios";
+    this.modalInfo = {operation: "", open: false, user: null};
     this.description =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     this.buttons = [
-      { icon: "assets/eye.svg", text: "Previsualizar", style: 0 },
-      { icon: "assets/add.svg", text: "Agregar nuevo usuario", style: 1 }
+      { icon: "assets/eye.svg", text: "Previsualizar", style: 0},
+      { icon: "assets/add.svg", text: "Agregar nuevo usuario", style: 1}
     ];
   }
 
