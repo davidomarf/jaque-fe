@@ -1,0 +1,17 @@
+<div [ngClass]="'section-header'">
+  <div [ngClass]="'section-info'">
+    <div [ngClass]="'section-title'">
+      {{title}}
+    </div>
+    <div [ngClass]="'section-description'">
+      {{description}}
+    </div>
+  </div>
+  <div [ngClass]="'section-buttons'" *ngIf="buttons.length">
+    <!-- If the header receives buttons, add as many as receieved -->
+    <button *ngFor="let button of buttons" [ngClass]="['button', 'button-'+button.style]">
+      <span [ngClass]="'icon'" [inlineSVG]="button.icon"></span>
+      <span [ngClass]="'text'"> {{button.text}} </span>
+    </button>
+  </div>
+</div>
