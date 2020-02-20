@@ -46,11 +46,12 @@
         <div [ngClass]="'modal-row'">
 
           <div [ngClass]="'input-wrapper'">
-            <input type="text" placeholder="Nombre" [value]="userInfo.name">
+            <input type="text" id="name" placeholder="Nombre" [value]="userInfo.name" (change)="updateField($event)">
           </div>
 
           <div [ngClass]="'input-wrapper'">
-            <input type="text" placeholder="Apellido Paterno" [value]="userInfo.fathersLastName">
+            <input type="text" id="fathersLastName" placeholder="Apellido Paterno" [value]="userInfo.fathersLastName"
+              (change)="updateField($event)">
           </div>
         </div>
 
@@ -59,12 +60,14 @@
 
 
           <div [ngClass]="'input-wrapper'">
-            <input type="text" placeholder="Apellido Materno" [value]="userInfo.mothersLastName">
+            <input type="text" id="mothersLastName" placeholder="Apellido Materno" [value]="userInfo.mothersLastName"
+              (change)="updateField($event)">
           </div>
 
 
           <div [ngClass]="'input-wrapper'">
-            <input type="text" placeholder="Correo electrónico" [value]="userInfo.email">
+            <input type="text" id="email" placeholder="Correo electrónico" [value]="userInfo.email"
+              (change)="updateField($event)">
           </div>
 
         </div>

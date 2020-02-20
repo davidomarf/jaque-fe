@@ -25,9 +25,13 @@ type User = {
 export class ModalComponent implements OnInit {
   @Input("modalInfo") modalInfo: Operation;
   @Input("users") users: User[];
+
   @Output() handleModalChild: EventEmitter<any> = new EventEmitter();
+  @Output() handleUpdateUserChild: EventEmitter<any> = new EventEmitter();
 
   userInfo: User;
+
+  updatedUser: User;
 
   cancel() {
     this.handleModalChild.emit(false);
@@ -35,28 +39,38 @@ export class ModalComponent implements OnInit {
 
   constructor() {}
 
-  saveUser() {}
+  saveUser() {
+    this.handleUpdateUserChild.emit({
+      info: this.updatedUser,
+      index: this.modalInfo.user
+    });
+    this.cancel();
+  }
 
   uploadPhoto() {}
 
   removePhoto() {}
 
+  updateField(event: any) {
+    this.updatedUser[event.target.id] = event.target.value;
+  }
+
   ngOnInit(): void {
-    console.log(this.users);
     if (this.modalInfo.operation === "modify") {
       this.userInfo = { ...this.users[this.modalInfo.user] };
-      console.log(this.userInfo);
     } else {
       this.userInfo = {
-        picture:null,
-        name:null,
-        fathersLastName:null,
-        mothersLastName:null,
-        email:null,
+        picture: null,
+        name: null,
+        fathersLastName: null,
+        mothersLastName: null,
+        email: null,
         roleId: null,
         role: null,
         active: false
       };
     }
+
+    this.updatedUser = { ...this.userInfo };
   }
 }
