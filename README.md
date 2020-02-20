@@ -10,7 +10,7 @@ This project was created with:
 - You **can't** upload pictures for new or existing users. It stays with the
   one being fetched from `users.json`.
 - You **can't** drag n' drop.
-- You **can't** select a role or change the status within the Modal.
+- ~~You **can't** select a role or change the status within the Modal.~~
 - You **can't** sort, search, or filter users.
 - You **can't** see other views for the users. There's only the list.
 - You **can't** delete or update users in the real json.
@@ -30,6 +30,9 @@ This project was created with:
 - You **can** change the status of a user from within the main list.
 - You **have** different content in the Modal if you're creating or updating a user.
 - You **can** delete or update users for your current session.
+
+- You **can** now change the role and status of an existing user within the Modal.
+  - This updates the role, but not the roleId, which would be far from ideal.
 
 ---
 
@@ -51,4 +54,3 @@ This project was created with:
 - The modal module is quite big.
 
 ---
-

@@ -2,6 +2,6 @@
   (handleModalChild)="handleModal($event)">
 </app-section-header>
 <app-user-table [users]="users" (handleModalChild)="handleModal($event)"></app-user-table>
-<app-modal *ngIf="modalInfo.open" (handleModalChild)="handleModal($event)" [modalInfo]="modalInfo" [users]="users"
-  (handleUpdateUserChild)="handleUpdateUser($event)">
+<app-modal *ngIf="modalInfo.open" [modalInfo]="modalInfo" [users]="users" [roles]="roles"
+  (handleUpdateUserChild)="handleUpdateUser($event)" (handleModalChild)="handleModal($event)">
 </app-modal>

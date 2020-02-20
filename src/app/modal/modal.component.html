@@ -76,9 +76,8 @@
         <div [ngClass]="'modal-row'">
 
           <div [ngClass]="'input-wrapper'">
-            <select type="dropdown">
-              <option value="saab">Saab</option>
-              <option value="saab">Saab</option>
+            <select type="dropdown" id="role" (change)="updateField($event)">
+              <option *ngFor="let role of roles"> {{role}}</option>
             </select>
           </div>
 

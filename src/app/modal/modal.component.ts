@@ -17,6 +17,10 @@ type User = {
   active: boolean;
 };
 
+type Roles = {
+  id: string;
+};
+
 @Component({
   selector: "app-modal",
   templateUrl: "./modal.component.html",
@@ -25,6 +29,7 @@ type User = {
 export class ModalComponent implements OnInit {
   @Input("modalInfo") modalInfo: Operation;
   @Input("users") users: User[];
+  @Input("roles") roles: Roles;
 
   @Output() handleModalChild: EventEmitter<any> = new EventEmitter();
   @Output() handleUpdateUserChild: EventEmitter<any> = new EventEmitter();
@@ -34,16 +39,15 @@ export class ModalComponent implements OnInit {
   updatedUser: User;
 
   /** Emit an event to close the Modal
-   * 
+   *
    */
   cancel() {
     this.handleModalChild.emit(false);
   }
 
-
   /**
    * Emit an event with the information to update the Users array
-   * 
+   *
    * When whe user is a new user, index will be set to -1, and will be handled
    * in the user component.
    * When the user already exists, it'll send the index to update it.
@@ -60,17 +64,17 @@ export class ModalComponent implements OnInit {
 
   /**
    * Updates the content for a key in the user object
-   * 
+   *
    * @param event Contains the key and the new value
    */
   updateField(event: any) {
     this.updatedUser[event.target.id] = event.target.value;
   }
 
-
   /** Toggle the status of the user */
-  toggleActive(){
-    this.userInfo = {...this.userInfo, active: !this.userInfo.active}
+  toggleActive() {
+    this.userInfo = { ...this.userInfo, active: !this.userInfo.active };
+    this.updatedUser = { ...this.userInfo };
   }
 
   uploadPhoto() {}
@@ -96,5 +100,6 @@ export class ModalComponent implements OnInit {
     }
 
     this.updatedUser = { ...this.userInfo };
+    console.log(this.roles);
   }
 }
