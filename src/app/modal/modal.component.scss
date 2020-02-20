@@ -145,3 +145,14 @@
     padding: 0 0.5rem;
   }
 }
+
+
+.image-square {
+  width: 100px; /* width of container */
+  height: 100px; /* height of container */
+  object-fit: cover;
+}
+
+.image-circle {
+  border-radius: 50%;
+}

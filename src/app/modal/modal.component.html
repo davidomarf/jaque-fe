@@ -16,7 +16,8 @@
 
       <div [ngClass]="'modal-photo-container'">
         <div [ngClass]="'modal-photo-placeholder'">
-          <span [ngClass]="'icon'" [inlineSVG]="'assets/user.svg'"></span>
+          <span *ngIf="userInfo.picture === null" [ngClass]="'icon'" [inlineSVG]="'assets/user.svg'"></span>
+          <img *ngIf="userInfo.picture" [ngClass]="['image-square', 'image-circle']" src={{userInfo.picture}}>
         </div>
         <div [ngClass]="'modal-photo-text'">
           <span>JPG, PNG | Tamaño mínimo de 300px × 300px</span>
