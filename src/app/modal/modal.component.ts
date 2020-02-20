@@ -33,17 +33,28 @@ export class ModalComponent implements OnInit {
 
   updatedUser: User;
 
+  /** Emit an event to close the Modal
+   * 
+   */
   cancel() {
     this.handleModalChild.emit(false);
   }
 
-  constructor() {}
 
+  /**
+   * Emit an event with the information to update the Users array
+   * 
+   * When whe user is a new user, index will be set to -1, and will be handled
+   * in the user component.
+   * When the user already exists, it'll send the index to update it.
+   */
   saveUser() {
     this.handleUpdateUserChild.emit({
       info: this.updatedUser,
       index: this.modalInfo.user
     });
+
+    // Close the Modal after emiting the event
     this.cancel();
   }
 
@@ -54,6 +65,9 @@ export class ModalComponent implements OnInit {
   updateField(event: any) {
     this.updatedUser[event.target.id] = event.target.value;
   }
+
+
+  constructor() {}
 
   ngOnInit(): void {
     if (this.modalInfo.operation === "modify") {

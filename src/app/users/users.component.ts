@@ -42,6 +42,15 @@ export class UsersComponent implements OnInit {
 
   modalInfo: Operation;
 
+  /**
+   * Stores the information of the modal invocation to know what operation to do
+   * 
+   * If the Modal has just opened (event.open), it must indicate what operation it'll
+   * do:
+   *   - Creating a new user, (event.operation === "new")
+   *   - Updating an existing user, and who's that user. (event.user)
+   * @param {Operation} event 
+   */
   handleModal(event: Operation) {
     this.modalInfo = event;
   }
@@ -77,8 +86,10 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.get("assets/json/roles.json").subscribe(data => {
+      // Fetch the roles before obtaining the user info
       this.roles = (data as any).roles.map(e => e.position);
       this.httpClient.get("assets/json/users.json").subscribe(data => {
+        // Use the existing roles to create a {role} key before assignig it
         this.users = (data as any).users.map(e => {
           return { ...e, role: this.roles[e.roleId - 1] };
         });

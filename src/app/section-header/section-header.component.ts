@@ -12,8 +12,13 @@ export class SectionHeaderComponent {
   @Input("title") title: string;
   @Input("description") description: string;
   @Input("buttons") buttons: [];
+  
   @Output() handleModalChild: EventEmitter<any> = new EventEmitter();
 
+  /**
+   * Emits an event to Modal handler to mount the component to create a new user
+   *
+   */
   newUserClick() {
     this.handleModalChild.emit({ operation: "new", open: true, user: null });
   }
